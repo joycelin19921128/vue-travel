@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>高雄旅遊資訊網</title>
+    <meta name="keywords" content="高雄" , "高雄旅遊", "高雄景點">
+    <meta name="description" content="高雄推薦景點">
+    <!--FB-->
+    <meta property="og: title" content="高雄旅遊" />
+    <meta property="og: description" content="高雄旅遊熱門景點介紹" />
+    <meta property="og: type" content="travel" />
+    <meta property="og: url" content="#" />
+    <meta property="og: image" content="assets/img/icons_pin.png" />
+    <!--自訂css-->
+    <link rel="stylesheet" href="assets/css/all.css">
+      <!--viewport RWD-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div  id="areaSelect" >
+        <section class="header pb-5">
+            <div class="container col-ms-5 col-ms-offset-3 text-center">
+                <h1 class="text-light pt-5 pb-5">高雄旅遊資訊網</h1>
+                <form action="">
+                    <div  class="form-group pb-5">
+                        <label for="exampleFormControlSelect1"  class="m-auto"></label>
+                        <select @change="showData(show)" v-model="show" class="areaSelect form-control  m-auto" id="exampleFormControlSelect1">
+                            <option  value="請選擇行政區">--請選擇行政區--</option>
+                            <option v-for="zone in zones" :value="zone">
+                                {{ zone }}
+                            </option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="recommend ">
+                    <h2 class="text-center  pt-3 pb-3 text-secondary">熱門行政區</h2>
+                    <ul class="hotArea text-center">
+                        <li @click="showData(zones[2])"  titie="美濃區" class="col-ms-6 col-md-3 m-2 ">
+                            <span :value="zones[2]" class="text-center p-2">{{ zones[2] }}</span>
+                        </li>
+                        <li @click="showData(zones[1])" titie="內門區" class="col-ms-6 col-md-3 m-2 ">
+                            <span :value="zones[1]" href="" class="text-center p-2">{{ zones[1] }}</span>
+                        </li>
+                        <li @click="showData(zones[9])" titie="永安區" class="col-ms-6 col-md-3 m-2 ">
+                            <span :value="zones[9]" href="" class="text-center p-2">{{ zones[9] }}</span>
+                        </li>
+                        <li @click="showData(zones[3])" titie="大樹區" class="col-ms-6 col-md-3 m-2 ">
+                            <span :value="zones[3]" href="" class="text-center p-2">{{ zones[3] }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <section class="content">
+            <div class="container">
+                <h2 class="areaTitle text-center text-secondary">選擇您想要去的區域吧！</h2>
+                <div class="row justify-content-center">
+                    <div v-for=" item in filteredAttractions"
+                        class="col-xs-6 col-sm-6 col-md-6 col-lg-4 card-deck mb-3"
+                    >
+                        <card
+                          v-bind:name="item.Name"
+                          v-bind:picture1="item.Picture1"
+                          v-bind:opentime="item.Opentime"
+                          v-bind:add="item.Add"
+                          v-bind:tel="item.Tel"
+                          v-bind:ticketinfo="item.Ticketinfo"
+                        >
+                        </card>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p class="text-center text-light pt-3">高雄旅遊網</p>
+            <p class="text-center text-warning pb-3">資料來源高雄市政府</p>
+        </footer>
+    </div>
+
+    <!--Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+    <!--all.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="assets/js/vue.js"></script>
+</body>
+
+</html>
